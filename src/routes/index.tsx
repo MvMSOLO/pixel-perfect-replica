@@ -1,23 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Studio } from "@/components/studio/Studio";
 
-// The home route ships no og:image, so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  ssr: false,
+  head: () => ({
+    meta: [
+      { title: "AK-47 Skin Studio — fit, preview, export .mdl" },
+      { name: "description", content: "Upload an AK-47 skin sheet, fit it to the fixed layout, preview it in 3D and download a ready .mdl." },
+      { property: "og:title", content: "AK-47 Skin Studio" },
+      { property: "og:description", content: "Fit a skin sheet, preview it in 3D and export a ready .mdl." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
+  component: Studio,
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
