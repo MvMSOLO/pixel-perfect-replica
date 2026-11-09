@@ -28,3 +28,5 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+- Skin studio: sheet layout lives only in src/lib/atlas.ts and MDL read/patch/verify only in src/lib/mdl.ts (pure, deterministic, no AI) — export patches texture bytes in place so geometry/bones/animations are never altered.
